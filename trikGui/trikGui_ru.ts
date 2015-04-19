@@ -162,7 +162,7 @@
     </message>
     <message>
         <source>TRIK</source>
-        <translation>ТРИК</translation>
+        <translation>ТРИКИО</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -321,7 +321,26 @@ Escape</translation>
     </message>
     <message>
         <source>Network Config</source>
-        <translation>Сеть</translation>
+        <translation>Суть беспощадка</translation>
+    </message>
+</context>
+<context>
+    <name>trikGui::WebClientWidget</name>
+    <message>
+        <source>Choose mode:</source>
+        <translation>Выберите режим:</translation>
+    </message>
+    <message>
+        <source>Wi-Fi client</source>
+        <translation>Wi-Fi клиент</translation>
+    </message>
+    <message>
+        <source>Wi-Fi access point</source>
+        <translation>Wi-Fi точка доступа</translation>
+    </message>
+    <message>
+        <source>Robot Market</source>
+        <translation>Робот Маркет</translation>
     </message>
 </context>
 </TS>

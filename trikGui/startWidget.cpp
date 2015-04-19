@@ -27,6 +27,7 @@
 
 #include <trikControl/motorInterface.h>
 
+#include "webClientWidget.h"
 #include "fileManagerWidget.h"
 #include "wiFiModeWidget.h"
 #include "motorsWidget.h"
@@ -46,10 +47,12 @@ StartWidget::StartWidget(Controller &controller, QString const &configPath, QWid
 	, mConfigPath(configPath)
 	, mFileManagerRoot(MainWidget::FileManagerRootType::scriptsDir)
 {
-	mTitleLabel.setText(tr("TRIK"));
+    mTitleLabel.setText(tr("TRIK"));
 
-	mMenuModel.appendRow(new QStandardItem(FileManagerWidget::menuEntry()));
-	mMenuModel.appendRow(new QStandardItem(WiFiModeWidget::menuEntry()));
+    mMenuModel.appendRow(new QStandardItem(FileManagerWidget::menuEntry()));
+    mMenuModel.appendRow(new QStandardItem(WiFiModeWidget::menuEntry()));
+    mMenuModel.appendRow(new QStandardItem(WebClientWidget::menuEntry()));
+
 
 	QStandardItem * const settingsItem = new QStandardItem(tr("Settings"));
 	mMenuModel.appendRow(settingsItem);
@@ -110,7 +113,11 @@ void StartWidget::launch()
 		} else if (currentItemText == WiFiModeWidget::menuEntry()) {
 			WiFiModeWidget wiFiModeWidget(mConfigPath);
 			emit newWidget(wiFiModeWidget);
-			result = wiFiModeWidget.exec();
+            result = wiFiModeWidget.exec();
+        } else if (currentItemText == WebClientWidget::menuEntry()) {
+            WebClientWidget webClientWidget(mConfigPath);
+            emit newWidget(webClientWidget);
+            result = webClientWidget.exec();
 		} else if (currentItemText == MotorsWidget::menuEntry(MotorInterface::Type::powerMotor)) {
 			MotorsWidget motorsWidget(mController.brick(), MotorInterface::Type::powerMotor);
 			emit newWidget(motorsWidget);

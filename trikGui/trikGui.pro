@@ -42,6 +42,9 @@ HEADERS += \
 	$$PWD/fileManagerMessageBox.h \
 	$$PWD/updateWidget.h \
 	$$PWD/systemSettingsWidget.h \
+        $$PWD/webClientWidget.h \
+        $$PWD/showSsidWidget.h \
+    connectToServerWidget.h
 
 SOURCES += \
 	$$PWD/digitSelector.cpp \
@@ -72,6 +75,9 @@ SOURCES += \
 	$$PWD/fileManagerMessageBox.cpp \
 	$$PWD/updateWidget.cpp \
 	$$PWD/systemSettingsWidget.cpp \
+        $$PWD/webClientWidget.cpp \
+        $$PWD/showSsidWidget.cpp \
+    connectToServerWidget.cpp
 
 TRANSLATIONS = trikGui_ru.ts
 RESOURCES = trikGui.qrc
