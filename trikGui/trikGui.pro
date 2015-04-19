@@ -44,7 +44,7 @@ HEADERS += \
 	$$PWD/systemSettingsWidget.h \
         $$PWD/webClientWidget.h \
         $$PWD/showSsidWidget.h \
-    connectToServerWidget.h
+        $$PWD/connectToServerWidget.h \
 
 SOURCES += \
 	$$PWD/digitSelector.cpp \
@@ -77,7 +77,7 @@ SOURCES += \
 	$$PWD/systemSettingsWidget.cpp \
         $$PWD/webClientWidget.cpp \
         $$PWD/showSsidWidget.cpp \
-    connectToServerWidget.cpp
+        $$PWD/connectToServerWidget.cpp \
 
 TRANSLATIONS = trikGui_ru.ts
 RESOURCES = trikGui.qrc
@@ -92,4 +92,4 @@ if (equals(QT_MAJOR_VERSION, 5)) {
 	QT += widgets
 }
 
-uses(trikKernel trikControl trikCommunicator trikScriptRunner trikWiFi trikTelemetry trikNetwork)
+uses(trikKernel trikControl trikCommunicator trikScriptRunner trikWiFi trikTelemetry trikNetwork trikWeb)

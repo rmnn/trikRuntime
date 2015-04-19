@@ -21,6 +21,9 @@
 #include <QTcpSocket>
 #include <QAbstractSocket>
 
+#include <trikWeb/robotJsonFactory.h>
+
+
 namespace trikGui {
 
 /// Widget showing parameters of wireless access point on the controller.

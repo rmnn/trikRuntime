@@ -21,10 +21,13 @@ QT += network
 
 DEFINES += TRIKCOMMUNICATOR_LIBRARY
 
-uses(trikScriptRunner trikControl trikKernel trikNetwork)
 
 HEADERS += \
-    $$PWD/socketclient.h
+    $$PWD/include/trikWeb/json.h \
+    $$PWD/include/trikWeb/robotJsonFactory.h \
+    $$PWD/rcReader.h \
 
 SOURCES += \
-    $$PWD/socketclient.cpp
+    $$PWD/json.cpp \
+    $$PWD/robotJsonFactory.cpp \
+    $$PWD/rcReader.cpp \
