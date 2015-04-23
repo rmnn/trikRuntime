@@ -24,10 +24,10 @@ DEFINES += TRIKCOMMUNICATOR_LIBRARY
 
 HEADERS += \
     $$PWD/include/trikWeb/json.h \
-    $$PWD/include/trikWeb/robotJsonFactory.h \
+    $$PWD/include/trikWeb/robotManager.h \
     $$PWD/rcReader.h \
 
 SOURCES += \
     $$PWD/json.cpp \
-    $$PWD/robotJsonFactory.cpp \
+    $$PWD/robotManager.cpp \
     $$PWD/rcReader.cpp \

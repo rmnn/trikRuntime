@@ -21,7 +21,7 @@
 #include <QTcpSocket>
 #include <QAbstractSocket>
 
-#include <trikWeb/robotJsonFactory.h>
+#include <trikWeb/robotManager.h>
 
 
 namespace trikGui {
