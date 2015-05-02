@@ -27,12 +27,13 @@
 
 using namespace trikGui;
 
-WebClientWidget::WebClientWidget(QString const &configPath
+WebClientWidget::WebClientWidget(Controller &controller, QString const &configPath
         , QWidget *parent)
     : TrikGuiDialog(parent)
     , mConfigPath(configPath)
     , mRcReader("/etc/trik/trikrc")
     , mTitle(tr("Choose mode:"))
+    , mController(controller)
 {
     mModes.addItem(tr("Show Robot SSID"));
     mModes.addItem(tr("Connect to server"));
@@ -70,7 +71,7 @@ void WebClientWidget::keyPressEvent(QKeyEvent *event)
                 returnValue = showSsidWidget.exec();
                 break;
             } else if (mModes.currentItem()->text() == tr("Connect to server")) {
-                ConnectToServerWidget connectToServerWidget;
+                ConnectToServerWidget connectToServerWidget(mController);
                 emit newWidget(connectToServerWidget);
                 returnValue = connectToServerWidget.exec();
 

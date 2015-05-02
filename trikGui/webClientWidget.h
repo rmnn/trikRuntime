@@ -16,6 +16,7 @@
 
 #include <QtCore/QString>
 
+#include "controller.h"
 #include "rcReader.h"
 #include "trikGuiDialog.h"
 
@@ -31,7 +32,7 @@ public:
     /// Constructor
     /// @param configPath - full path to configuration files.
     /// @param parent - parent of this widget in Qt object hierarchy.
-    WebClientWidget(QString const &configPath, QWidget *parent = 0);
+    WebClientWidget(Controller &controller, QString const &configPath, QWidget *parent = 0);
 
     /// Returns menu entry for this widget.
     static QString menuEntry();
@@ -47,6 +48,7 @@ private:
     QEventLoop mEventLoop;
     QVBoxLayout mLayout;
     QLabel mTitle;
+    Controller &mController;
     QListWidget mModes;
 };
 

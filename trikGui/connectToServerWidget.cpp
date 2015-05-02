@@ -14,8 +14,8 @@
 
 using namespace trikGui;
 
-ConnectToServerWidget::ConnectToServerWidget(QWidget *parent)
-    : TrikGuiDialog(parent)
+ConnectToServerWidget::ConnectToServerWidget(Controller &controller, QWidget *parent)
+    : TrikGuiDialog(parent), mController(controller)
 {
 
     mConnectionStatus.setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -88,6 +88,12 @@ void ConnectToServerWidget::readyRead()
 
     if (message.contains("type")) {
         message.remove("HeartBeat");
-        mMessage.setText(robotManager.proccessMessage(message));
+        QString result = robotManager.proccessMessage(message);
+        if (result == "run") {\
+            mController.runFile("/home/root/trik/scripts/smiles.qts");
+            mMessage.setText("Received program. Worked.");
+        } else {
+            mMessage.setText(result);
+        }
     }
 }

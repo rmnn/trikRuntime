@@ -115,7 +115,7 @@ void StartWidget::launch()
 			emit newWidget(wiFiModeWidget);
             result = wiFiModeWidget.exec();
         } else if (currentItemText == WebClientWidget::menuEntry()) {
-            WebClientWidget webClientWidget(mConfigPath);
+            WebClientWidget webClientWidget(mController, mConfigPath);
             emit newWidget(webClientWidget);
             result = webClientWidget.exec();
 		} else if (currentItemText == MotorsWidget::menuEntry(MotorInterface::Type::powerMotor)) {

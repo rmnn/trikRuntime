@@ -18,7 +18,6 @@ HEADERS += \
 	$$PWD/backgroundWidget.h \
 	$$PWD/batteryIndicator.h \
 	$$PWD/connectButton.h \
-	$$PWD/controller.h \
 	$$PWD/digitSelector.h \
 	$$PWD/fileManagerWidget.h \
 	$$PWD/motorLever.h \
@@ -45,6 +44,7 @@ HEADERS += \
         $$PWD/webClientWidget.h \
         $$PWD/showSsidWidget.h \
         $$PWD/connectToServerWidget.h \
+        $$PWD/controller.h \
 
 SOURCES += \
 	$$PWD/digitSelector.cpp \
@@ -55,7 +55,6 @@ SOURCES += \
 	$$PWD/sensorsSelectionWidget.cpp \
 	$$PWD/startWidget.cpp \
 	$$PWD/trikGuiApplication.cpp \
-	$$PWD/controller.cpp \
 	$$PWD/main.cpp \
 	$$PWD/motorLever.cpp \
 	$$PWD/motorsWidget.cpp \
@@ -78,6 +77,9 @@ SOURCES += \
         $$PWD/webClientWidget.cpp \
         $$PWD/showSsidWidget.cpp \
         $$PWD/connectToServerWidget.cpp \
+        $$PWD/controller.cpp \
+
+
 
 TRANSLATIONS = trikGui_ru.ts
 RESOURCES = trikGui.qrc

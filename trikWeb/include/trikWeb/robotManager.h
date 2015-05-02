@@ -15,10 +15,10 @@ public:
 
     QByteArray createJson();
     QString proccessMessage(QString const &message);
+    QString getProgramm(QString const &message);
 
 private:
     void updateModelConfig(QString const &modelConfig);
-    void runScript(QString const &script);
 
 };
 

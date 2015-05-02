@@ -22,6 +22,7 @@
 #include <QAbstractSocket>
 
 #include <trikWeb/robotManager.h>
+#include "controller.h"
 
 
 namespace trikGui {
@@ -34,7 +35,7 @@ class ConnectToServerWidget : public TrikGuiDialog
 public:
     /// Constructor
     /// @param parent - parent of this widget in Qt object hierarchy.
-    explicit ConnectToServerWidget(QWidget *parent = 0);
+    explicit ConnectToServerWidget(Controller &controller, QWidget *parent = 0);
 
     void renewFocus() override;
 
@@ -50,6 +51,7 @@ public slots:
 
 private:
     QTcpSocket *socket;
+    Controller &mController;
 
     QVBoxLayout mMainLayout;
     QVBoxLayout mParametersLayout;

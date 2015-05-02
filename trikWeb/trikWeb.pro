@@ -27,7 +27,11 @@ HEADERS += \
     $$PWD/include/trikWeb/robotManager.h \
     $$PWD/rcReader.h \
 
+
 SOURCES += \
     $$PWD/json.cpp \
     $$PWD/robotManager.cpp \
     $$PWD/rcReader.cpp \
+
+
+uses(trikScriptRunner)

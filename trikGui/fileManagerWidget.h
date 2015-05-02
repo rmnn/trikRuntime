@@ -49,8 +49,8 @@ public:
 	/// @param controller - reference to controller object which provides access to low-level functionality.
 	/// @param fileManagerRoot - root directory for file browser.
 	/// @param parent - parent of this widget in Qt object hierarchy.
-	explicit FileManagerWidget(Controller &controller, MainWidget::FileManagerRootType fileManagerRoot
-			, QWidget *parent = 0);
+    explicit FileManagerWidget(Controller &controller, MainWidget::FileManagerRootType fileManagerRoot,
+                               QWidget *parent = 0);
 
 	~FileManagerWidget() override;
 

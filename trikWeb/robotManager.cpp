@@ -27,15 +27,35 @@ QString RobotManager::proccessMessage(QString const &message) {
     QString result = "";
     foreach(QVariant msgJson, messages) {
         QtJson::JsonObject msg =  msgJson.toMap();
-        if (msg["type"] == "sendDiagram") {
-            runScript(msg["text"].toString());
-            return "Received diagram. Running..";
+        if (msg["type"] == "sendDiagram") {         
+            return "run";
         }
         if (msg["type"] == "sendModelConfig") {
             updateModelConfig(msg["text"].toString());
-            return "Received new model-config. Updating..";
+            return "Received new model-config. Updated";
         }
         return "Unknown type of message.";
+       }
+
+    return result;
+}
+
+
+QString RobotManager::getProgramm(QString const &message) {
+    bool ok = false;
+    JsonArray messages = QtJson::parse(message, ok).toList();
+    if (!ok) {
+        qFatal("An error occurred during parsing");
+        return "An error occurred during parsing";
+    }
+
+    QString result = "";
+    foreach(QVariant msgJson, messages) {
+        QtJson::JsonObject msg =  msgJson.toMap();
+        if (msg["type"] == "sendDiagram") {
+            return msg["text"].toString();
+        }
+        return "Unknown";
        }
 
     return result;
@@ -66,10 +86,6 @@ QByteArray RobotManager::createJson()
     message["robot"] = robot;
 
     return QtJson::serialize(message);
-}
-
-void RobotManager::runScript(QString const &script) {
-
 }
 
 void RobotManager::updateModelConfig(QString const &modelConfig) {
