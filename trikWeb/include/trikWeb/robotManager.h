@@ -18,7 +18,7 @@ public:
     QString getProgramm(QString const &message);
 
 private:
-    void updateModelConfig(QString const &modelConfig);
+    QString updateModelConfig(QString const &modelConfig);
 
 };
 

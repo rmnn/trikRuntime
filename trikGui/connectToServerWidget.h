@@ -53,10 +53,13 @@ private:
     QTcpSocket *socket;
     Controller &mController;
 
+
     QVBoxLayout mMainLayout;
     QVBoxLayout mParametersLayout;
     QLabel mConnectionStatus;
     QLabel mMessage;
+    QLabel mMessage2;
+
 };
 
 }

@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QIODevice>
 
 #include "json.h"
 #include "rcReader.h"
@@ -31,8 +32,8 @@ QString RobotManager::proccessMessage(QString const &message) {
             return "run";
         }
         if (msg["type"] == "sendModelConfig") {
-            updateModelConfig(msg["text"].toString());
-            return "Received new model-config. Updated";
+           return updateModelConfig(msg["text"].toString());
+           // return "Received new model-config. Updated";
         }
         return "Unknown type of message.";
        }
@@ -46,7 +47,7 @@ QString RobotManager::getProgramm(QString const &message) {
     JsonArray messages = QtJson::parse(message, ok).toList();
     if (!ok) {
         qFatal("An error occurred during parsing");
-        return "An error occurred during parsing";
+        return "An error QIODevice occurred during parsing";
     }
 
     QString result = "";
@@ -88,7 +89,14 @@ QByteArray RobotManager::createJson()
     return QtJson::serialize(message);
 }
 
-void RobotManager::updateModelConfig(QString const &modelConfig) {
-
+QString RobotManager::updateModelConfig(QString const &modelConfig) {
+    QFile file ("/home/root/trik/model-config.xml");
+    if (file.open(QIODevice::ReadWrite | QIODevice::Truncate)) {
+       QTextStream stream(&file);
+       stream << modelConfig << endl;
+       return "Received new model-config. Reboot for apply.";
+    } else {
+        return "Failed to update model-config. Try again.";
+    }
 }
 

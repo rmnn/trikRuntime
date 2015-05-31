@@ -20,8 +20,13 @@ ConnectToServerWidget::ConnectToServerWidget(Controller &controller, QWidget *pa
 
     mConnectionStatus.setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     mParametersLayout.setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+
     mMessage.setAlignment(Qt::AlignCenter);
     mMessage.setWordWrap(true);
+
+    mMessage2.setAlignment(Qt::AlignCenter);
+    mMessage2.setWordWrap(true);
+
     mConnectionStatus.setWordWrap(true);
 
     mConnectionStatus.setText(tr("Connection to server.."));
@@ -30,6 +35,8 @@ ConnectToServerWidget::ConnectToServerWidget(Controller &controller, QWidget *pa
     mMainLayout.addLayout(&mParametersLayout);
 
     mParametersLayout.addWidget(&mMessage);
+    mParametersLayout.addWidget(&mMessage2);
+
     setLayout(&mMainLayout);
 
     doConnect();
@@ -66,6 +73,7 @@ void ConnectToServerWidget::connected()
 
     mConnectionStatus.setText("Connected");
     mMessage.setText("Waiting for messages");
+    mMessage2.setText("");
 
     socket->write(robotManager.createJson() + "\n");
    // socket->write("{\"from\": \"Robot\", \"type\": \"connect\", \"robot\": {\"ssid\": \"ssid2\", \"modelConfig\": \"<config><initScript></initScript><E1><angularServomotor/></E1>    <E2><angularServomotor invert=\\\"false\\\"/></E2></config>\", \"systemConfig\": \"<config><deviceClasses><servoMotor period=\\\"20000000\\\" invert=\\\"false\\\"/></deviceClasses><devicePorts><servoMotor port=\\\"E1\\\"/><servoMotor port=\\\"E2\\\"/></devicePorts><deviceTypes><angularServomotor class=\\\"servoMotor\\\" min=\\\"600000\\\" max=\\\"2200000\\\" zero=\\\"1400000\\\" stop=\\\"0\\\" type=\\\"angular\\\"/><continuousRotationServomotor class=\\\"servoMotor\\\" min=\\\"600000\\\" max=\\\"2200000\\\" zero=\\\"1400000\\\" stop=\\\"0\\\" type=\\\"continuousRotation\\\"/></deviceTypes></config>\"}}\n");
@@ -85,6 +93,7 @@ void ConnectToServerWidget::readyRead()
 {
     QString message = socket->readAll();
     trikWeb::RobotManager robotManager;
+    mMessage.setMaximumHeight(2 * mMessage.maximumHeight());
 
     if (message.contains("type")) {
         message.remove("HeartBeat");
@@ -92,8 +101,10 @@ void ConnectToServerWidget::readyRead()
         if (result == "run") {\
             mController.runFile("/home/root/trik/scripts/smiles.qts");
             mMessage.setText("Received program. Worked.");
+            mMessage.setText("");
         } else {
-            mMessage.setText(result);
+            mMessage.setText("Received new model-config");
+            mMessage2.setText("Reboot for apply changes");
         }
     }
 }
